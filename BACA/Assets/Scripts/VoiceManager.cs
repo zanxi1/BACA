@@ -14,7 +14,7 @@ public class VoiceManager : MonoBehaviour {
     [SerializeField] Text textChannelName;
     [SerializeField] GameObject menu;
     public Transform playerTransform;
-    private Transform cachedPlayerTransform;
+    private Vector3 cachedPlayerTransform = new Vector3();
     public float nextPosUpdate = 0f;
 
     public void setTarget(Transform target) {
@@ -55,6 +55,7 @@ public class VoiceManager : MonoBehaviour {
 
     public void JoinChannel() {
         if (!string.IsNullOrEmpty(inputChannelName.text)) {
+            //Channel3DProperties prop = new Channel3DProperties(2,1,1.0f,AudioFadeModel.InverseByDistance);
             vivox.JoinChannel(
                 inputChannelName.text, 
                 ChannelType.Positional, 
@@ -85,8 +86,8 @@ public class VoiceManager : MonoBehaviour {
     }
 
     public void Update3DPostion(Transform pos) {
-        if (pos != cachedPlayerTransform) {
-            cachedPlayerTransform = pos;
+        if (pos.position != cachedPlayerTransform) {
+            cachedPlayerTransform = pos.position;
             Debug.Log(pos == null);
             GetChannel()?.Set3DPosition(
                 pos.position,

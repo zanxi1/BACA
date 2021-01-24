@@ -589,7 +589,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 7ce2f25b11f02ae9d487a33524ba9244
+      Hash: 6b7d5d490638e1e14a40dc6a6a2a0bb5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: VoiceManager
