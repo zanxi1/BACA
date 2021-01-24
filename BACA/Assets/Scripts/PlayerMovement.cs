@@ -31,7 +31,6 @@ public class PlayerMovement : NetworkBehaviour {
 
 		Camera.main.GetComponent<FollowPlayer>().setTarget(gameObject.transform);
 		GameObject.Find("VoiceManager").GetComponent<VoiceManager>().setTarget(gameObject.transform);
-		//VivoxVoiceManager.Instance.GetComponent<VoiceManager>().setTarget(gameObject.transform);
 	}
 
 }

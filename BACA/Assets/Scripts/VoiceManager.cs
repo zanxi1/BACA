@@ -13,7 +13,7 @@ public class VoiceManager : MonoBehaviour {
     [SerializeField] Text textUsername;
     [SerializeField] Text textChannelName;
     [SerializeField] GameObject menu;
-    private Transform playerTransform;
+    public Transform playerTransform;
     private Transform cachedPlayerTransform;
     public float nextPosUpdate = 0f;
 
@@ -72,9 +72,15 @@ public class VoiceManager : MonoBehaviour {
 	}
 
     public void Update() {
+        Debug.Log("## Update");
+        Debug.Log(Time.time);
+        Debug.Log(nextPosUpdate);
+        Debug.Log(Time.time > nextPosUpdate);
         if (Time.time > nextPosUpdate) {
+            Debug.Log(playerTransform.position);
             Update3DPostion(playerTransform);
             nextPosUpdate = Time.time + 0.3f;
+            Debug.Log("Updated Time");
         }
     }
 
