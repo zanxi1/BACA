@@ -232,6 +232,10 @@ MonoBehaviour:
   inputChannelName: {fileID: 844383215}
   textUsername: {fileID: 151662903}
   textChannelName: {fileID: 915657910}
+  menu: {fileID: 1096639857}
+  playerTransform: {fileID: 14795343250448998, guid: 409987c2430a8b644826590f2d1ba8f5,
+    type: 3}
+  nextPosUpdate: 0
 --- !u!4 &477073067
 Transform:
   m_ObjectHideFlags: 0
@@ -1299,7 +1303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1096639858
 MonoBehaviour:
   m_ObjectHideFlags: 0

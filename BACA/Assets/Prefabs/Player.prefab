@@ -127,8 +127,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  playerTransform: {fileID: 14795343250448998}
   playerRigidBody: {fileID: 14795343250448992}
+  voiceManager: {fileID: 0}
   moveForce: 100
+  nextPosUpdate: 0
 --- !u!114 &7682122082479882474
 MonoBehaviour:
   m_ObjectHideFlags: 0

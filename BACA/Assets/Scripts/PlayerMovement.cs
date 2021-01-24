@@ -30,6 +30,8 @@ public class PlayerMovement : NetworkBehaviour {
 		//base.OnStartLocalPlayer();
 
 		Camera.main.GetComponent<FollowPlayer>().setTarget(gameObject.transform);
+		GameObject.Find("VoiceManager").GetComponent<VoiceManager>().setTarget(gameObject.transform);
+		//VivoxVoiceManager.Instance.GetComponent<VoiceManager>().setTarget(gameObject.transform);
 	}
 
 }
