@@ -4,23 +4,25 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public Rigidbody rb;
-	public Transform player;
+	public CharacterController controller;
 
-	public float force = 100f;
+	public float speed = 6f;
 
-	private void FixedUpdate() {
-		if (Input.GetKey("d")) {
-			rb.AddForce(force * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-		}
-		if (Input.GetKey("a")) {
-			rb.AddForce(-force * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-		}
-		if (Input.GetKey("w")) {
-			rb.AddForce(0, 0, force * Time.deltaTime, ForceMode.VelocityChange);
-		}
-		if (Input.GetKey("s")) {
-			rb.AddForce(0, 0, -force * Time.deltaTime, ForceMode.VelocityChange);
+	public float turnSmoothTime = 0.1f;
+	float turnSmoothVelocity;
+
+	void Update()
+	{
+		float horizontal = Input.GetAxisRaw("Horizontal");
+		float vertical = Input.GetAxisRaw("Vertical");
+		Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+		if(direction.magnitude >= 0.1f)
+		{
+			float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+			float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+			transform.rotation = Quaternion.Euler(0f, angle, 0f);
+			controller.Move(direction * speed * Time.deltaTime);
 		}
 	}
 
