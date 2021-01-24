@@ -1,26 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour {//NetworkBehaviour {
 
-	public Rigidbody rb;
-	public Transform player;
-
-	public float force = 100f;
+	public Rigidbody playerRigidBody;
+	public float moveForce = 100f;
 
 	private void FixedUpdate() {
-		if (Input.GetKey("d")) {
-			rb.AddForce(force * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-		}
-		if (Input.GetKey("a")) {
-			rb.AddForce(-force * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
-		}
+		//if (!isLocalPlayer)
+		//	return;
+
 		if (Input.GetKey("w")) {
-			rb.AddForce(0, 0, force * Time.deltaTime, ForceMode.VelocityChange);
+			playerRigidBody.AddForce(0, 0, moveForce * Time.deltaTime, ForceMode.VelocityChange);
 		}
 		if (Input.GetKey("s")) {
-			rb.AddForce(0, 0, -force * Time.deltaTime, ForceMode.VelocityChange);
+			playerRigidBody.AddForce(0, 0, -moveForce * Time.deltaTime, ForceMode.VelocityChange);
+		}
+		if (Input.GetKey("a")) {
+			playerRigidBody.AddForce(-moveForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
+		}
+		if (Input.GetKey("d")) {
+			playerRigidBody.AddForce(moveForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
 		}
 	}
 

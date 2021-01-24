@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour {
 
-    public Transform player;
+    public Transform playerTransform;
     public Vector3 offset;
     public float turnSpeed = 4f;
 
     void Update() {
-        transform.position = player.position + offset;
+        transform.position = playerTransform.position + offset;
 
     }
 
     void LateUpdate() {
         offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * offset;
-        transform.position = player.position + offset;
-        transform.LookAt(player.position);
+        transform.position = playerTransform.position + offset;
+        transform.LookAt(playerTransform.position);
     }
 }

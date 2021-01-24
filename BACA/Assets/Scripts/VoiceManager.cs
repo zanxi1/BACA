@@ -4,7 +4,7 @@ using UnityEngine;
 using VivoxUnity;
 using UnityEngine.UI;
 
-public class VivoxManager : MonoBehaviour
+public class VoiceManager : MonoBehaviour
 {
     VivoxVoiceManager vivox;
     Client client = new Client();
