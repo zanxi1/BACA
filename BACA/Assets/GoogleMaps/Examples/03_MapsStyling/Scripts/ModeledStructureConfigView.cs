@@ -85,6 +85,7 @@ namespace Google.Maps.Examples {
       }
 
       UpdateStyle();
+      BaseMapLoader.finishedStyling = true;
     }
 
     private void UpdateStyle() {

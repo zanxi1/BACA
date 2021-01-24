@@ -63,6 +63,7 @@ namespace Google.Maps.Examples {
     /// <summary>
     /// Whether the application has quit;
     /// </summary>
+    public bool finishedStyling = false;
     private bool HasQuit;
 
     /// <summary>
@@ -227,6 +228,8 @@ namespace Google.Maps.Examples {
       MapsService.MakeMapLoadRegion()
           .AddViewport(Camera.main, MaxDistance)
           .Load(RenderingStyles);
+
+      finishedStyling = true;
     }
 
     /// <summary>

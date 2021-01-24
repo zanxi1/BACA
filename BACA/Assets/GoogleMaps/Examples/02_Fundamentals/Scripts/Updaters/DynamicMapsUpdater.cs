@@ -68,7 +68,7 @@ namespace Google.Maps.Examples {
     /// Used to indicate that we need to load the map using the current viewport - either because it
     /// hasn't been loaded yet, or because the camera has moved.
     /// </summary>
-    private bool NeedsLoading = true;
+    private bool NeedsLoading = false;
 
     /// <summary>
     /// Position of the camera the last time the map was loaded.
@@ -97,7 +97,7 @@ namespace Google.Maps.Examples {
     }
 
     void Start() {
-      StartCoroutines();
+      // StartCoroutine();
     }
 
     /// <summary>
@@ -116,8 +116,9 @@ namespace Google.Maps.Examples {
       }
 
       if (NeedsLoading) {
-        Ground.transform.position = new Vector3(cameraPosition.x, 0f, cameraPosition.z);
-        if (BaseMapLoader != null) {
+        Ground.transform.position = new Vector3(cameraPosition.x, -5f, cameraPosition.z);
+        if (BaseMapLoader != null && BaseMapLoader.finishedStyling == true) {
+          // Debug.Log("Loading Map");
           BaseMapLoader.LoadMap();
         }
 
@@ -126,6 +127,7 @@ namespace Google.Maps.Examples {
         NeedsLoading = false;
         NeedsUnloading = true;
       }
+      
     }
 
     /// <summary>
