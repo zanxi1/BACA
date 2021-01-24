@@ -27,6 +27,8 @@ namespace Google.Maps.Examples {
     [Tooltip("LatLng to load (must be set before hitting play).")]
     public LatLng LatLng = new LatLng(40.6892199, -74.044601);
 
+    public LatLng CustomLatLng;
+
     /// <summary>
     /// The <see cref="MapsService"/> is the entry point to communicate with to the Maps SDK for
     /// Unity. It provides apis to load map regions, and dispatches events throughout the loading
@@ -90,7 +92,7 @@ namespace Google.Maps.Examples {
     /// In this example, the map setup and loading are done as soon as the loader becomes active in
     /// the scene.
     /// </summary>
-    void Start() {
+    public void Start() {
       InitFloatingOrigin();
       InitStylingOptions();
       InitEventListeners();
@@ -117,6 +119,15 @@ namespace Google.Maps.Examples {
 
       // Set real-world location to load.
       MapsService.InitFloatingOrigin(LatLng);
+    }
+
+    public void ChangeFloatingOrigin(float Lat, float Lng){
+      if (MapsService == null) {
+        return;
+      }
+      LatLng newLatLng = new LatLng(Lat, Lng);
+      // Set real-world location to load.
+      MapsService.InitFloatingOrigin(newLatLng);
     }
 
     /// <summary>
