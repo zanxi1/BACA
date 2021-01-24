@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 public class FollowPlayer : MonoBehaviour {
 
@@ -18,4 +19,8 @@ public class FollowPlayer : MonoBehaviour {
         transform.position = playerTransform.position + offset;
         transform.LookAt(playerTransform.position);
     }
+
+    public void setTarget(Transform target) {
+        playerTransform = target;
+	}
 }
